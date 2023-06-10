@@ -2,7 +2,8 @@ import express, { json, urlencoded } from "express";
 import cors from "cors";
 require("dotenv").config();
 
-// import "./connection_database";
+import initRoutes from "./src/routes";
+import dbConnect from "./src/config/dbconnect";
 
 const app = express();
 
@@ -17,9 +18,8 @@ app.use(json());
 
 app.use(urlencoded({ extended: true }));
 
-app.use("/", (req, res) => {
-  res.send("Hello World");
-});
+dbConnect();
+initRoutes(app);
 
 const PORT = process.env.PORT || 5000;
 

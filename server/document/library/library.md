@@ -17,7 +17,7 @@
 | 14  | multer storage cloudinary |                 lưu ảnh từ multer vào cloudinary                  | https://www.npmjs.com/package/multer-storage-cloudinary |
 
 ```bash
-npm i express dotenv cors express-async-handler jsonwebtoken mongoose bcrypt
+npm i express dotenv cors express-async-handler jsonwebtoken mongoose bcryptjs
 ```
 
 ```bash
