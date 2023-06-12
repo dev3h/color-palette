@@ -1,5 +1,6 @@
 import express, { json, urlencoded } from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 require("dotenv").config();
 
 import initRoutes from "./src/routes";
@@ -13,9 +14,8 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
-
+app.use(cookieParser());
 app.use(json());
-
 app.use(urlencoded({ extended: true }));
 
 dbConnect();

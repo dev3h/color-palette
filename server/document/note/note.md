@@ -1,1 +1,2 @@
-
+- Khi lưu `refreshToken` vào cookie thì có thể check lúc login ở bên postman xong thì bấm vào mục `cookie` để xem
+- hàm logout có thể xử lý ở bên client bằng việc lưu `accessToken` vào `localStorage` và xóa đi khi logout

@@ -9,7 +9,18 @@
 ## mongoose model
 
 - [model](https://mongoosejs.com/docs/models.html)
-- `create()` là tạo và lưu vào db luôn
+- [api model](https://mongoosejs.com/docs/api/model.html)
+
+## Các hàm của sequelize
+
+| Stt |           Tên           |                                      Mô tả                                      |                                                                          Link |
+| :-- | :---------------------: | :-----------------------------------------------------------------------------: | ----------------------------------------------------------------------------: |
+| 1   |      **create()**       |                             tạo và lưu vào db luôn                              |                https://mongoosejs.com/docs/models.html#constructing-documents |
+| 2   |      **findOne()**      |            tìm bản ghi với điều kiện là thỏa mãn obj truyền vào func            |          https://mongoosejs.com/docs/api/query.html#Query.prototype.findOne() |
+| 3   |     **findById()**      |                   tìm bản ghi theo Id - tốc độ tìm nhanh hơn                    |                   https://mongoosejs.com/docs/api/model.html#Model.findById() |
+| 4   |      **select()**       | chọn những cái gì cần lấy ra, cái gì ko cần lấy thì thêm dâu `-` vào đằng trước | https://mongoosejs.com/docs/api/schematype.html#SchemaType.prototype.select() |
+| 5   | **findByIdAndUpdate()** |                          tìm bản ghi theo id và update                          |          https://mongoosejs.com/docs/api/model.html#Model.findByIdAndUpdate() |
+| 6   | **findOneAndUpdate()**  |                       tìm bản ghi theo 1 trường và update                       |           https://mongoosejs.com/docs/api/model.html#Model.findOneAndUpdate() |
 
 ## pre save
 
@@ -20,9 +31,33 @@ Ten_schema.pre("save", async function (next) {
 });
 ```
 
+## method
+
+- Nếu chỉ cần định nghĩa 1 method
+
+```js
+Ten_schema.methods.ten_method = function () {
+  // handle
+};
+```
+
+- Nếu cần định nghĩa nhiều method
+
+```js
+Ten_schema.methods = {
+  ten_method1: function () {
+    // handle
+  },
+  ten_method2: function () {
+    // handle
+  },
+};
+```
+
 ## Note
 
 - Không phải tạo tên database trong mongo compass. Khi connect nếu nó ko thấy nó sẽ tự tạo cho chúng ta database đó
+- Thằng mongoose nó tự tạo cho mình 1 cái id nên không cần phải tạo id nữa. Và nó sẽ ko đọc đươc arrow function
 - Liên kết khóa ngoại
 
 ```js
@@ -33,3 +68,4 @@ address: {
 ```
 
 - Do lúc tạo schema đã có validate rồi nên không cần phải validate nữa
+- Thằng mongoose sẽ trả về 1 instance obj. Nên nếu muốn plain obj thì dùng `.toObject()`

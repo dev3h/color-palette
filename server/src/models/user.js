@@ -61,5 +61,12 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+userSchema.methods = {
+  // kiểm tra password
+  isCorrectPassword: async function (password) {
+    return await bcrypt.compareSync(password, this.password);
+  },
+};
+
 //Export the model
 export default model("User", userSchema);

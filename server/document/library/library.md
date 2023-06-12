@@ -9,6 +9,7 @@
 | 6   |   express-async-handler   |              tự động bắt lỗi mà ko phải dùng catch()              |     https://www.npmjs.com/package/express-async-handler |
 | 7   |         bcryptjs          |                           băm mật khẩu                            |                  https://www.npmjs.com/package/bcryptjs |
 | 8   |       jsonwebtoken        |                             tạo token                             |              https://www.npmjs.com/package/jsonwebtoken |
+| 9   |       cookie parser       |                     phân tích cú pháp cookie                      |             https://www.npmjs.com/package/cookie-parser |
 | 9   |        http-errors        |                          tạo status lỗi                           |               https://www.npmjs.com/package/http-errors |
 | 10  |            joi            |                         validate dữ liệu                          |                       https://www.npmjs.com/package/joi |
 | 11  |           uuid            |                  tự tạo đoạn mã, và nó là unique                  |                      https://www.npmjs.com/package/uuid |
