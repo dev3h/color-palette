@@ -10,5 +10,7 @@ router.post("/login", controllers.login);
 router.get("/current", verifyAccessToken, controllers.getCurrent);
 router.post("/refreshtoken", controllers.refreshAccessToken);
 router.get("/logout", controllers.logout);
+router.get("/forgotpassword", controllers.forgotPassword);
+router.put("/resetpassword", controllers.resetPassword);
 
 export default router;

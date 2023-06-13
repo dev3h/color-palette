@@ -10,6 +10,8 @@
 | 7   |         bcryptjs          |                           băm mật khẩu                            |                  https://www.npmjs.com/package/bcryptjs |
 | 8   |       jsonwebtoken        |                             tạo token                             |              https://www.npmjs.com/package/jsonwebtoken |
 | 9   |       cookie parser       |                     phân tích cú pháp cookie                      |             https://www.npmjs.com/package/cookie-parser |
+| 10  |          crypto           |  tạo chữ ký số, xử lý mã băm, có sẵn trong nodejs không cần tải   |                                                         |
+| 11  |        Nodemailer         |                        gửi mail từ nodejs                         |                https://www.npmjs.com/package/nodemailer |
 | 9   |        http-errors        |                          tạo status lỗi                           |               https://www.npmjs.com/package/http-errors |
 | 10  |            joi            |                         validate dữ liệu                          |                       https://www.npmjs.com/package/joi |
 | 11  |           uuid            |                  tự tạo đoạn mã, và nó là unique                  |                      https://www.npmjs.com/package/uuid |

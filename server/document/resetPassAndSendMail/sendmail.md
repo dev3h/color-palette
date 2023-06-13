@@ -1,0 +1,2 @@
+- [doc](https://nodemailer.com/about/)
+- Copy code vào file `utils/sendMail.js`

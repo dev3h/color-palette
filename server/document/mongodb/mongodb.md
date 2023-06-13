@@ -69,3 +69,4 @@ address: {
 
 - Do lúc tạo schema đã có validate rồi nên không cần phải validate nữa
 - Thằng mongoose sẽ trả về 1 instance obj. Nên nếu muốn plain obj thì dùng `.toObject()`
+- Lúc update lại 1 số trường thì phải dùng `save()` thì nó mới lưu thay đổi
