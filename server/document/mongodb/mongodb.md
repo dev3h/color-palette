@@ -21,6 +21,8 @@
 | 4   |      **select()**       | chọn những cái gì cần lấy ra, cái gì ko cần lấy thì thêm dâu `-` vào đằng trước | https://mongoosejs.com/docs/api/schematype.html#SchemaType.prototype.select() |
 | 5   | **findByIdAndUpdate()** |                          tìm bản ghi theo id và update                          |          https://mongoosejs.com/docs/api/model.html#Model.findByIdAndUpdate() |
 | 6   | **findOneAndUpdate()**  |                       tìm bản ghi theo 1 trường và update                       |           https://mongoosejs.com/docs/api/model.html#Model.findOneAndUpdate() |
+| 7   |       **find()**        |                             lấy tất cả các bản ghi                              |                       https://mongoosejs.com/docs/api/model.html#Model.find() |
+| 8   | **findByIdAndDelete()** |          tìm và xóa bản ghi có id truyền vào, trả về bản ghi bị xóa đó          |          https://mongoosejs.com/docs/api/model.html#Model.findByIdAndDelete() |
 
 ## pre save
 

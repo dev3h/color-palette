@@ -1,2 +1,3 @@
 - [doc](https://nodemailer.com/about/)
 - Copy code vào file `utils/sendMail.js`
+- Khi click vào link trong mail thì ta sẽ dẫn người dùng đến 1 form và form này chứa token trong url. Cho người dùng nhập mật khẩu mới và gửi lên server.
