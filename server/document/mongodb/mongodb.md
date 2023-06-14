@@ -23,6 +23,9 @@
 | 6   | **findOneAndUpdate()**  |                       tìm bản ghi theo 1 trường và update                       |           https://mongoosejs.com/docs/api/model.html#Model.findOneAndUpdate() |
 | 7   |       **find()**        |                             lấy tất cả các bản ghi                              |                       https://mongoosejs.com/docs/api/model.html#Model.find() |
 | 8   | **findByIdAndDelete()** |          tìm và xóa bản ghi có id truyền vào, trả về bản ghi bị xóa đó          |          https://mongoosejs.com/docs/api/model.html#Model.findByIdAndDelete() |
+| 9   |  **countDocuments()**   |                     đêm số lượng bản ghi thỏa mãn điều kiện                     |             https://mongoosejs.com/docs/api/model.html#Model.countDocuments() |
+| 10  |       **skip()**        |                            bỏ qua bao nhiêu bản ghi                             |             https://mongoosejs.com/docs/api/query.html#Query.prototype.skip() |
+| 11  |       **limit()**       |                        giới hạn số lượng bản ghi trả về                         |            https://mongoosejs.com/docs/api/query.html#Query.prototype.limit() |
 
 ## pre save
 
