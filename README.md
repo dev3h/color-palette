@@ -2,18 +2,27 @@
 
 A simple RESTful API for generating color palettes for your projects.
 
-[1 API Route](#1-api-route)
+[1 Requirements](#1-requirements)
 
-- [1.1 user routes](#11-user-routes)
-- [1.2 color tag routes](#12-color-tag-routes)
-- [1.3 collection tag routes](#13-collection-tag-routes)
-- [1.4 collection tag routes](#14-collection-tag-routes)
+[2 API Route](#2-api-route)
 
-[2 Usage](#2-usage)
+- [2.1 user routes](#21-user-routes)
+- [2.2 color tag routes](#22-color-tag-routes)
+- [2.3 collection tag routes](#23-collection-tag-routes)
+- [2.4 collection tag routes](#24-collection-tag-routes)
 
-## 1 API Route
+[3 Usage](#2-usage)
 
-### 1.1 user routes
+## 1 Requirements
+
+- **Node.js**
+- **MongoDB** - The database used for the application. Please install MongoDB before proceeding with the next steps in the installation process.
+- **MongoDB Compass** - The MongoDB GUI used to view and manage the data stored in the database.
+- **Cloudinary Account** - The cloud-based image and video management service used to store and manage images for palettes. To use this API, you will need a Cloudinary account to get your `cloudinary_name`, `cloudinary_key`, and `cloudinary_secret` credentials.
+
+## 2 API Route
+
+### 2.1 user routes
 
 | Route                   | HTTP Verb |                                                      Description |
 | ----------------------- | :-------: | ---------------------------------------------------------------: |
@@ -29,7 +38,7 @@ A simple RESTful API for generating color palettes for your projects.
 | **/user/:id**           |    PUT    | Update a user's profile, including their avatar (for admin only) |
 | **/user/:id**           |  DELETE   |                         Delete a user's account (for admin only) |
 
-### 1.2 color tag routes
+### 2.2 color tag routes
 
 | Route             | HTTP Verb |                         Description |
 | ----------------- | :-------: | ----------------------------------: |
@@ -39,7 +48,7 @@ A simple RESTful API for generating color palettes for your projects.
 | **/colortag/:id** |    PUT    |    Update a color tag's information |
 | **/colortag/:id** |  DELETE   |                  Delete a color tag |
 
-### 1.3 collection tag routes
+### 2.3 collection tag routes
 
 | Route                  | HTTP Verb |                              Description |
 | ---------------------- | :-------: | ---------------------------------------: |
@@ -49,7 +58,7 @@ A simple RESTful API for generating color palettes for your projects.
 | **/collectiontag/:id** |    PUT    |    Update a collection tag's information |
 | **/collectiontag/:id** |  DELETE   |                  Delete a collection tag |
 
-### 1.4 collection tag routes
+### 2.4 collection tag routes
 
 | Route                | HTTP Verb |                                        Description |
 | -------------------- | :-------: | -------------------------------------------------: |
@@ -60,7 +69,7 @@ A simple RESTful API for generating color palettes for your projects.
 | **/palette/:id**     |  DELETE   |                                   Delete a palette |
 | **/palette/like:id** |    PUT    | Toggle a user's "like" status on a specific palett |
 
-## 2 Usage
+## 3 Usage
 
 1. Clone the repository: `git clone https://github.com/dev3h/dev3h-color-palette-API.git`
 2. Install the dependencies: `npm install`
