@@ -2,6 +2,7 @@
 import express from "express";
 import * as controllers from "../controllers";
 import { verifyAccessToken, isAdmin } from "../middlewares/verify_token";
+import uploadCloud from "../config/cloudinary.config";
 
 const router = express.Router();
 
@@ -15,8 +16,8 @@ router.put("/resetpassword", controllers.resetPassword);
 
 router.use(verifyAccessToken);
 router.get("/", isAdmin, controllers.getUsers);
-router.put("/current", controllers.updateProfileUser);
-router.put("/:id", isAdmin, controllers.updateUser);
+router.put("/current", uploadCloud.single("avatar"), controllers.updateProfileUser);
+router.put("/:id", isAdmin, uploadCloud.single("avatar"), controllers.updateUser);
 router.delete("/:id", isAdmin, controllers.deleteUser);
 
 export default router;

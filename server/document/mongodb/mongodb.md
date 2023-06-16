@@ -26,6 +26,20 @@
 | 9   |  **countDocuments()**   |                     đêm số lượng bản ghi thỏa mãn điều kiện                     |             https://mongoosejs.com/docs/api/model.html#Model.countDocuments() |
 | 10  |       **skip()**        |                            bỏ qua bao nhiêu bản ghi                             |             https://mongoosejs.com/docs/api/query.html#Query.prototype.skip() |
 | 11  |       **limit()**       |                        giới hạn số lượng bản ghi trả về                         |            https://mongoosejs.com/docs/api/query.html#Query.prototype.limit() |
+| 12  |     **populate()**      |                    lấy dữ liệu giữa các bảng có ref với nhau                    |                                     https://mongoosejs.com/docs/populate.html |
+
+## toJSON, toObject
+
+- [virtuals](https://mongoosejs.com/docs/tutorials/virtuals.html)
+
+```js
+toJSON: { virtuals: true },
+toObject: { virtuals: true },
+```
+
+- `toJSON` sẽ chạy khi dùng `res.json()` hoặc `res.send()`
+- `toObject` sẽ chạy khi dùng `res.render()`
+- `virtuals: true` để chạy virtual field, tức là nó sẽ lấy ra các field mà không có trong bảng mà ta đã định nghĩa
 
 ## pre save
 
@@ -57,6 +71,25 @@ Ten_schema.methods = {
     // handle
   },
 };
+```
+
+## $set, $push, $pull
+
+- `$set` để update 1 field
+- `$push` để thêm 1 phần tử vào mảng
+- `$pull` để xóa 1 phần tử trong mảng
+
+## Lấy dữ liệu giữa các collection có ref tới nhau thông qua populate
+
+- Điều kiện là phải có kiểu `objectId` và phải có `ref` tới collection đó
+- Truyền key của bảng schema có chứa ref thông qua `path`, vào truyền những thứ muốn lấy với `select`
+
+```js
+populate([
+  { path: "tags.colorTags", select: "name" },
+  { path: "tags.collectionTags", select: "name" },
+  { path: "likes", select: "displayname email" },
+]);
 ```
 
 ## Note

@@ -24,7 +24,12 @@ var userSchema = new Schema(
       required: true,
     },
     avatar: {
-      type: String,
+      path: {
+        type: String,
+      },
+      filename: {
+        type: String,
+      },
     },
     role: {
       type: String,

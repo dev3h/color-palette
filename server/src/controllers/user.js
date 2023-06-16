@@ -1,6 +1,7 @@
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
+const cloudinary = require("cloudinary").v2;
 
 import { User } from "../models";
 import { generateAccessToken, generateRefreshToken } from "../middlewares/jwt";
@@ -165,10 +166,26 @@ const getUsers = asyncHandler(async (req, res) => {
 
 const updateUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
-  if (!id || Object.keys(req.body).length === 0) throw new Error("missing input");
-  const response = await User.findByIdAndUpdate(id, req.body, { new: true }).select(
+  let bodyToUpdate = req.body || {};
+
+  if (!id) throw new Error("missing input");
+  const fileData = req?.file;
+
+  const oldAvatar = await User.findById(id).select("avatar");
+
+  if (fileData) {
+    const { path, filename } = fileData;
+    if (!bodyToUpdate["avatar"]) bodyToUpdate["avatar"] = {}; // Kiểm tra nếu chưa có object avatar trong bodyToUpdate
+    bodyToUpdate["avatar"]["path"] = path;
+    bodyToUpdate["avatar"]["filename"] = filename;
+  }
+
+  const response = await User.findByIdAndUpdate(id, bodyToUpdate, { new: true }).select(
     "-password -refreshToken -role"
   );
+  if (response && fileData && oldAvatar)
+    await cloudinary.uploader.destroy(oldAvatar.avatar.filename);
+
   return res.status(200).json({
     success: response ? true : false,
     updateUser: response ? response : "Update user failed",
@@ -177,10 +194,25 @@ const updateUser = asyncHandler(async (req, res) => {
 
 const updateProfileUser = asyncHandler(async (req, res) => {
   const { _id } = req.user;
-  if (!_id || Object.keys(req.body).length === 0) throw new Error("missing input");
-  const response = await User.findByIdAndUpdate(_id, req.body, { new: true }).select(
+  if (!_id) throw new Error("missing input");
+  let bodyToUpdate = req.body || {};
+
+  const fileData = req?.file;
+
+  const oldAvatar = await User.findById(id).select("avatar");
+
+  if (fileData) {
+    const { path, filename } = fileData;
+    if (!bodyToUpdate["avatar"]) bodyToUpdate["avatar"] = {}; // Kiểm tra nếu chưa có object avatar trong bodyToUpdate
+    bodyToUpdate["avatar"]["path"] = path;
+    bodyToUpdate["avatar"]["filename"] = filename;
+  }
+  const response = await User.findByIdAndUpdate(_id, bodyToUpdate, { new: true }).select(
     "-password -refreshToken -role"
   );
+  if (response && fileData && oldAvatar)
+    await cloudinary.uploader.destroy(oldAvatar.avatar.filename);
+
   return res.status(200).json({
     success: response ? true : false,
     updateUser: response ? response : "Update profile failed",

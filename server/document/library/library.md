@@ -13,12 +13,9 @@
 | 10  |          crypto           |  tạo chữ ký số, xử lý mã băm, có sẵn trong nodejs không cần tải   |                                                         |
 | 11  |        Nodemailer         |                        gửi mail từ nodejs                         |                https://www.npmjs.com/package/nodemailer |
 | 12  |          slugify          |                             tạo slug                              |                   https://www.npmjs.com/package/slugify |
-| 9   |        http-errors        |                          tạo status lỗi                           |               https://www.npmjs.com/package/http-errors |
-| 10  |            joi            |                         validate dữ liệu                          |                       https://www.npmjs.com/package/joi |
-| 11  |           uuid            |                  tự tạo đoạn mã, và nó là unique                  |                      https://www.npmjs.com/package/uuid |
-| 12  |        cloudinary         |                    nơi lưu trữ ảnh trên cloud                     |                https://www.npmjs.com/package/cloudinary |
-| 13  |          multer           |          lấy ảnh kiểu file lưu vào `memory` hoặc `disk`           |                      https://www.npmjs.com/package/uuid |
-| 14  | multer storage cloudinary |                 lưu ảnh từ multer vào cloudinary                  | https://www.npmjs.com/package/multer-storage-cloudinary |
+| 13  |        cloudinary         |                    nơi lưu trữ ảnh trên cloud                     |                https://www.npmjs.com/package/cloudinary |
+| 14  |          multer           |          lấy ảnh kiểu file lưu vào `memory` hoặc `disk`           |                      https://www.npmjs.com/package/uuid |
+| 15  | multer storage cloudinary |                 lưu ảnh từ multer vào cloudinary                  | https://www.npmjs.com/package/multer-storage-cloudinary |
 
 ```bash
 npm i express dotenv cors express-async-handler jsonwebtoken mongoose bcryptjs
