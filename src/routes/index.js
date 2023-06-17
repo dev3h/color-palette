@@ -3,6 +3,7 @@ import user from "./user";
 import colorTag from "./color_tag";
 import collectionTag from "./collection_tag";
 import palette from "./palette";
+import insert from "./insert";
 import { notFound, errHandler } from "../middlewares/errHandler";
 
 const initRoutes = (app) => {
@@ -10,6 +11,7 @@ const initRoutes = (app) => {
   app.use("/api/v1/colortag", colorTag);
   app.use("/api/v1/collectiontag", collectionTag);
   app.use("/api/v1/palette", palette);
+  app.use("/api/v1/insert", insert);
 
   app.use(notFound);
 

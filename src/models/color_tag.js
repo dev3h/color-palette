@@ -19,6 +19,7 @@ var colorTagSchema = new Schema(
       required: true,
       unique: true,
       trim: true,
+      maxlength: 6,
     },
   },
   {

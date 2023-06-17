@@ -9,19 +9,28 @@ var userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
+      maxlength: 100,
     },
     displayname: {
       type: String,
       required: true,
+      maxlength: 100,
     },
     email: {
       type: String,
       required: true,
       unique: true,
+      validate: {
+        validator: function (v) {
+          return /@gmail\.com$/.test(v);
+        },
+        message: (props) => `${props.value} is not a valid gmail address!`,
+      },
     },
     password: {
       type: String,
       required: true,
+      minlength: 3,
     },
     avatar: {
       path: {
@@ -33,6 +42,7 @@ var userSchema = new Schema(
     },
     role: {
       type: String,
+      enum: ["user", "admin", "sadmin"],
       default: "user",
     },
     isBlocked: {

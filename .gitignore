@@ -1,6 +1,9 @@
 # Test
 api.http
 
+# data
+data/*.json
+
 # Logs
 logs
 *.log

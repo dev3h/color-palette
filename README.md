@@ -35,6 +35,7 @@ A simple RESTful API for generating color palettes for your projects.
 | **user/resetpassword**  |    PUT    |                         Reset password for the forgotten account |
 | **/user/**              |    GET    |                         Get a list of all users (for admin only) |
 | **/user/current**       |    PUT    |        Update the current user's profile, including their avatar |
+| **/user/**              |   POST    |                                                      create user |
 | **/user/:id**           |    PUT    | Update a user's profile, including their avatar (for admin only) |
 | **/user/:id**           |  DELETE   |                         Delete a user's account (for admin only) |
 

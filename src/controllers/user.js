@@ -164,6 +164,25 @@ const getUsers = asyncHandler(async (req, res) => {
   });
 });
 
+const createUser = asyncHandler(async (req, res) => {
+  const { email, password, username, displayname } = req.body;
+  if (!email || !password || !username || !displayname) {
+    return res.status(400).json({
+      success: false,
+      mes: "Please fill all the fields",
+    });
+  }
+  const user = await User.findOne({ email });
+  if (user) throw new Error("User already exists");
+  else {
+    const newUser = await User.create(req.body);
+    res.status(200).json({
+      success: newUser ? true : false,
+      mes: newUser ? "create user successfully" : "create user failed",
+    });
+  }
+});
+
 const updateUser = asyncHandler(async (req, res) => {
   const { id } = req.params;
   let bodyToUpdate = req.body || {};
@@ -240,6 +259,7 @@ export {
   forgotPassword,
   resetPassword,
   getUsers,
+  createUser,
   updateProfileUser,
   updateUser,
   deleteUser,

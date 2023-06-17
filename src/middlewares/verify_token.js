@@ -18,9 +18,18 @@ const verifyAccessToken = asyncHandler((req, res, next) => {
 
 const isAdmin = asyncHandler((req, res, next) => {
   const { role } = req.user;
-  if (role !== "admin")
-    return res.status(401).json({ success: false, mes: "Require admin role!" });
+  if (role !== "admin" || role !== "sadmin")
+    return res
+      .status(401)
+      .json({ success: false, mes: "Require admin or super admin role!" });
   next();
 });
 
-export { verifyAccessToken, isAdmin };
+const isSuperAdmin = asyncHandler((req, res, next) => {
+  const { role } = req.user;
+  if (role !== "sadmin")
+    return res.status(401).json({ success: false, mes: "Require super admin role!" });
+  next();
+});
+
+export { verifyAccessToken, isAdmin, isSuperAdmin };
