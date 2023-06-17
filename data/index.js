@@ -1,3 +1,9 @@
-export { default as User } from "./user.json";
-export { default as ColorTag } from "./color_tag.json";
-export { default as CollectionTag } from "./collection_tag.json";
+const User = require("./user.json");
+const ColorTag = require("./color_tag.json");
+const CollectionTag = require("./collection_tag.json");
+
+module.exports = {
+  User,
+  ColorTag,
+  CollectionTag,
+};

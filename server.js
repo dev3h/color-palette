@@ -1,6 +1,7 @@
-import express, { json, urlencoded } from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
+const express = require("express");
+const { json, urlencoded } = require("express");
+const cors = require("cors");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 import initRoutes from "./src/routes";

@@ -1,4 +1,5 @@
-import mongoose, { Schema, model } from "mongoose"; // Erase if already required
+const mongoose = require("mongoose");
+const { Schema, model } = mongoose;
 
 // Declare the Schema of the Mongo model
 var paletteSchema = new Schema(
@@ -47,4 +48,4 @@ var paletteSchema = new Schema(
 );
 
 //Export the model
-export default model("Palette", paletteSchema);
+module.exports = model("Palette", paletteSchema);

@@ -1,6 +1,6 @@
-import { Schema, model } from "mongoose"; // Erase if already required
-import bcrypt from "bcryptjs";
-import crypto from "crypto";
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 
 // Declare the Schema of the Mongo model
 var userSchema = new Schema(
@@ -94,4 +94,4 @@ userSchema.methods = {
 };
 
 //Export the model
-export default model("User", userSchema);
+module.exports = model("User", userSchema);

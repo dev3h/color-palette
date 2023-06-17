@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose"; // Erase if already required
+const mongoose = require("mongoose");
+const { Schema, model } = mongoose;
 
 // Declare the Schema of the Mongo model
 var colorTagSchema = new Schema(
@@ -28,4 +29,4 @@ var colorTagSchema = new Schema(
 );
 
 //Export the model
-export default model("ColorTag", colorTagSchema);
+module.exports = model("ColorTag", colorTagSchema);

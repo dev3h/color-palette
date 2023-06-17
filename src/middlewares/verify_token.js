@@ -1,5 +1,5 @@
-import jwt, { TokenExpiredError } from "jsonwebtoken";
-import asyncHandler from "express-async-handler";
+const jwt = require("jsonwebtoken");
+const asyncHandler = require("express-async-handler");
 
 const verifyAccessToken = asyncHandler((req, res, next) => {
   const token = req?.headers?.authorization;
@@ -32,4 +32,4 @@ const isSuperAdmin = asyncHandler((req, res, next) => {
   next();
 });
 
-export { verifyAccessToken, isAdmin, isSuperAdmin };
+module.exports = { verifyAccessToken, isAdmin, isSuperAdmin };

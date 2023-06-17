@@ -1,6 +1,6 @@
-import asyncHandler from "express-async-handler";
-import slugify from "slugify";
-import { Palette } from "../models";
+const asyncHandler = require("express-async-handler");
+const slugify = require("slugify");
+const { Palette } = require("../models");
 
 const createPalette = asyncHandler(async (req, res) => {
   if (Object.keys(req.body).length === 0) throw new Error("Missing inputs");
@@ -145,7 +145,7 @@ const toggleLiked = asyncHandler(async (req, res) => {
   }
 });
 
-export {
+module.exports = {
   createPalette,
   getPalettes,
   getPalette,

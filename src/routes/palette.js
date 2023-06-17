@@ -1,7 +1,7 @@
 // định nghĩa các routes CRUD cho user
-import express from "express";
-import * as controllers from "../controllers";
-import { verifyAccessToken, isAdmin } from "../middlewares/verify_token";
+const express = require("express");
+const controllers = require("../controllers");
+const { verifyAccessToken, isAdmin } = require("../middlewares/verify_token");
 
 const router = express.Router();
 
@@ -15,4 +15,4 @@ router.put("/:id", controllers.updatePalette);
 router.put("/like/:pid", controllers.toggleLiked);
 router.delete("/:id", controllers.deletePalette);
 
-export default router;
+module.exports = router;

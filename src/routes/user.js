@@ -1,8 +1,12 @@
 // định nghĩa các routes CRUD cho user
-import express from "express";
-import * as controllers from "../controllers";
-import { verifyAccessToken, isAdmin, isSuperAdmin } from "../middlewares/verify_token";
-import uploadCloud from "../config/cloudinary.config";
+const express = require("express");
+const controllers = require("../controllers");
+const {
+  verifyAccessToken,
+  isAdmin,
+  isSuperAdmin,
+} = require("../middlewares/verify_token");
+const uploadCloud = require("../config/cloudinary.config");
 
 const router = express.Router();
 
@@ -23,4 +27,4 @@ router.post("/", controllers.createUser);
 router.put("/:id", uploadCloud.single("avatar"), controllers.updateUser);
 router.delete("/:id", controllers.deleteUser);
 
-export default router;
+module.exports = router;

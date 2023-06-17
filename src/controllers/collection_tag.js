@@ -1,6 +1,6 @@
-import asyncHandler from "express-async-handler";
-import slugify from "slugify";
-import { CollectionTag } from "../models";
+const asyncHandler = require("express-async-handler");
+const slugify = require("slugify");
+const { CollectionTag } = require("../models");
 
 const createCollectionTag = asyncHandler(async (req, res) => {
   if (Object.keys(req.body).length === 0) throw new Error("Missing inputs");
@@ -96,7 +96,7 @@ const deleteCollectionTag = asyncHandler(async (req, res) => {
   });
 });
 
-export {
+module.exports = {
   createCollectionTag,
   getCollectionTags,
   getCollectionTag,

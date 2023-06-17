@@ -1,6 +1,6 @@
-import asyncHandler from "express-async-handler";
-import slugify from "slugify";
-import { ColorTag } from "../models";
+const asyncHandler = require("express-async-handler");
+const slugify = require("slugify");
+const { ColorTag } = require("../models");
 
 const createColorTag = asyncHandler(async (req, res) => {
   if (Object.keys(req.body).length === 0) throw new Error("Missing inputs");
@@ -94,4 +94,10 @@ const deleteColorTag = asyncHandler(async (req, res) => {
   });
 });
 
-export { createColorTag, getColorTags, getColorTag, updateColorTag, deleteColorTag };
+module.exports = {
+  createColorTag,
+  getColorTags,
+  getColorTag,
+  updateColorTag,
+  deleteColorTag,
+};

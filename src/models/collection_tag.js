@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose"; // Erase if already required
+const mongoose = require("mongoose");
+const { Schema, model } = mongoose;
 
 // Declare the Schema of the Mongo model
 var collectionTagSchema = new Schema(
@@ -21,4 +22,5 @@ var collectionTagSchema = new Schema(
 );
 
 //Export the model
-export default model("CollectionTag", collectionTagSchema);
+
+module.exports = model("CollectionTag", collectionTagSchema);

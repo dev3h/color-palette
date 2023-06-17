@@ -1,6 +1,6 @@
-import asyncHandler from "express-async-handler";
-import slugify from "slugify";
-import { User, ColorTag, CollectionTag } from "../../data";
+const asyncHandler = require("express-async-handler");
+const slugify = require("slugify");
+const { User, ColorTag, CollectionTag } = require("../../data");
 
 const fnUser = async (data) => {
   await User.create(data);
@@ -41,4 +41,4 @@ const insertCollectionTag = asyncHandler(async (req, res) => {
   return res.json("Done");
 });
 
-export { insertUser, insertColorTag, insertCollectionTag };
+module.exports = { insertUser, insertColorTag, insertCollectionTag };

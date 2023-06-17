@@ -1,10 +1,10 @@
 // có thể tạo các file route riêng rồi import vào file route chung này
-import user from "./user";
-import colorTag from "./color_tag";
-import collectionTag from "./collection_tag";
-import palette from "./palette";
-import insert from "./insert";
-import { notFound, errHandler } from "../middlewares/errHandler";
+const user = require("./user");
+const colorTag = require("./color_tag");
+const collectionTag = require("./collection_tag");
+const palette = require("./palette");
+const insert = require("./insert");
+const { notFound, errHandler } = require("../middlewares/errHandler");
 
 const initRoutes = (app) => {
   app.use("/api/v1/user", user);
@@ -19,4 +19,4 @@ const initRoutes = (app) => {
   app.use(errHandler);
 };
 
-export default initRoutes;
+module.exports = initRoutes;

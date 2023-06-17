@@ -1,6 +1,6 @@
-import asyncHandler from "express-async-handler";
-import jwt from "jsonwebtoken";
-import crypto from "crypto";
+const asyncHandler = require("express-async-handler");
+const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const cloudinary = require("cloudinary").v2;
 
 import { User } from "../models";
@@ -250,7 +250,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   });
 });
 
-export {
+module.exports = {
   register,
   login,
   getCurrent,

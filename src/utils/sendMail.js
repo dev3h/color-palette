@@ -1,5 +1,5 @@
-import nodemailer from "nodemailer";
-import asyncHandler from "express-async-handler";
+const nodemailer = require("nodemailer");
+const asyncHandler = require("express-async-handler");
 
 const sendMail = asyncHandler(async ({ email, html }) => {
   // create reusable transporter object using the default SMTP transport
@@ -24,4 +24,4 @@ const sendMail = asyncHandler(async ({ email, html }) => {
   return info;
 });
 
-export default sendMail;
+module.exports = sendMail;
