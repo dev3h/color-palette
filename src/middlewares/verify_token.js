@@ -18,10 +18,14 @@ const verifyAccessToken = asyncHandler((req, res, next) => {
 
 const isAdmin = asyncHandler((req, res, next) => {
   const { role } = req.user;
-  if (role !== "admin" || role !== "sadmin")
+
+  if (role !== "admin" && role !== "sadmin") {
+    console.log("hello");
     return res
       .status(401)
       .json({ success: false, mes: "Require admin or super admin role!" });
+  }
+
   next();
 });
 

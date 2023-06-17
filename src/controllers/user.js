@@ -41,7 +41,7 @@ const login = asyncHandler(async (req, res) => {
     const newRefreshToken = generateRefreshToken(userData._id);
 
     // lưu refreshToken vào db
-    await User.findByIdAndUpdate(userData._id, { newRefreshToken });
+    await User.findByIdAndUpdate(userData._id, { refreshToken: newRefreshToken });
 
     // lưu refreshToken vào cookie
     res.cookie("refreshToken", newRefreshToken, {

@@ -1,9 +1,9 @@
-const User = require("./user.json");
-const ColorTag = require("./color_tag.json");
-const CollectionTag = require("./collection_tag.json");
+const UserData = require("./user.json");
+const ColorTagData = require("./color_tag.json");
+const CollectionTagData = require("./collection_tag.json");
 
 module.exports = {
-  User,
-  ColorTag,
-  CollectionTag,
+  UserData,
+  ColorTagData,
+  CollectionTagData,
 };

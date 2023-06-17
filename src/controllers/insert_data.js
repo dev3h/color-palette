@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const slugify = require("slugify");
-const { User, ColorTag, CollectionTag } = require("../../data");
+const { UserData, ColorTagData, CollectionTagData } = require("../../data");
+const { User, ColorTag, CollectionTag } = require("../models");
 
 const fnUser = async (data) => {
   await User.create(data);
@@ -18,24 +19,25 @@ const fnCollectionTag = async (data) => {
 
 const insertUser = asyncHandler(async (req, res) => {
   const promises = [];
-  for (let User of data) {
-    promises.push(fnUser(User));
+  for (let data of UserData) {
+    promises.push(fnUser(data));
   }
   await Promise.all(promises);
   return res.json("Done");
 });
 const insertColorTag = asyncHandler(async (req, res) => {
   const promises = [];
-  for (let ColorTag of data) {
-    promises.push(fnColorTag(ColorTag));
+  for (let data of ColorTagData) {
+    promises.push(fnColorTag(data));
   }
   await Promise.all(promises);
   return res.json("Done");
 });
+
 const insertCollectionTag = asyncHandler(async (req, res) => {
   const promises = [];
-  for (let CollectionTag of data) {
-    promises.push(fnCollectionTag(CollectionTag));
+  for (let data of CollectionTagData) {
+    promises.push(fnCollectionTag(data));
   }
   await Promise.all(promises);
   return res.json("Done");
