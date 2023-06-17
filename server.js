@@ -4,8 +4,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
-import initRoutes from "./src/routes";
-import dbConnect from "./src/config/dbconnect";
+const initRoutes = require("./src/routes");
+const dbConnect = require("./src/config/dbconnect");
 
 const app = express();
 
