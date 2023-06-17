@@ -3,9 +3,9 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary").v2;
 
-import { User } from "../models";
-import { generateAccessToken, generateRefreshToken } from "../middlewares/jwt";
-import sendMail from "../utils/sendMail";
+const { User } = require("../models");
+const { generateAccessToken, generateRefreshToken } = require("../middlewares/jwt");
+const sendMail = require("../utils/sendMail");
 
 const register = asyncHandler(async (req, res) => {
   const { email, password, username, displayname } = req.body;
