@@ -76,4 +76,3 @@ A simple RESTful API for generating color palettes for your projects.
 2. Install the dependencies: `npm install`
 3. Run the app: `npm run dev`
 4. The API will be available at: `http://localhost:5000/api/v1`
-5. Create folder data and you push file json like this: `users.json`, `color_tag.json`, `collection_tag.json`, if you don't create folder data, when you run app, it throw error.

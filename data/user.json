@@ -1,0 +1,75 @@
+[
+  {
+    "username": "test",
+    "displayname": "Test User",
+    "email": "test@gmail.com",
+    "password": "123",
+    "role": "admin"
+  },
+  {
+    "username": "hoa123",
+    "displayname": "Nguyến Thị Hoa",
+    "email": "hoa@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user1",
+    "displayname": "user1",
+    "email": "user1@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user2",
+    "displayname": "user2",
+    "email": "user2@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user3",
+    "displayname": "user3",
+    "email": "user3@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user4",
+    "displayname": "user4",
+    "email": "user1@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user5",
+    "displayname": "user5",
+    "email": "user5@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user6",
+    "displayname": "user6",
+    "email": "user6@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user7",
+    "displayname": "user7",
+    "email": "user7@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user8",
+    "displayname": "user8",
+    "email": "user8@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user9",
+    "displayname": "user9",
+    "email": "user9@gmail.com",
+    "password": "123"
+  },
+  {
+    "username": "user10",
+    "displayname": "user10",
+    "email": "user10@gmail.com",
+    "password": "123"
+  }
+]
