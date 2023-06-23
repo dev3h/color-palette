@@ -8,9 +8,7 @@ const createCollectionTag = asyncHandler(async (req, res) => {
   const newCollectionTag = await CollectionTag.create(req.body);
   return res.status(201).json({
     success: newCollectionTag ? true : false,
-    createdCollectionTag: newCollectionTag
-      ? newCollectionTag
-      : "cannot create collection tag",
+    data: newCollectionTag ? newCollectionTag : "cannot create collection tag",
   });
 });
 
@@ -51,7 +49,7 @@ const getCollectionTags = asyncHandler(async (req, res) => {
 
   // Pagination
   const page = +req.query.page || 1;
-  const limit = +req.query.limit || 2;
+  const limit = +req.query.limit || 10;
   const skip = (page - 1) * limit;
 
   queryCommand = queryCommand.skip(skip).limit(limit);
@@ -63,7 +61,7 @@ const getCollectionTags = asyncHandler(async (req, res) => {
   return res.status(200).json({
     success: response ? true : false,
     counts,
-    collectionTags: response ? response : "cannot get collection tags",
+    data: response ? response : "cannot get collection tags",
   });
 });
 
@@ -73,7 +71,7 @@ const getCollectionTag = asyncHandler(async (req, res) => {
   const collectionTag = await CollectionTag.findById(id);
   return res.status(200).json({
     success: collectionTag ? true : false,
-    collectionTag: collectionTag ? collectionTag : "cannot get collection tag",
+    data: collectionTag ? collectionTag : "cannot get collection tag",
   });
 });
 const updateCollectionTag = asyncHandler(async (req, res) => {
@@ -82,7 +80,7 @@ const updateCollectionTag = asyncHandler(async (req, res) => {
   const response = await CollectionTag.findByIdAndUpdate(id, req.body, { new: true });
   return res.status(200).json({
     success: response ? true : false,
-    updateCollectionTag: response ? response : "update collection tag failed",
+    updated: response ? response : "update collection tag failed",
   });
 });
 const deleteCollectionTag = asyncHandler(async (req, res) => {
@@ -92,7 +90,7 @@ const deleteCollectionTag = asyncHandler(async (req, res) => {
   const response = await CollectionTag.findByIdAndDelete(id);
   return res.status(200).json({
     success: response ? true : false,
-    deleteCollectionTag: response ? response : "delete collection tag failed",
+    deleted: response ? response : "delete collection tag failed",
   });
 });
 

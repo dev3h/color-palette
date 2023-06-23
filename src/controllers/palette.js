@@ -11,7 +11,7 @@ const createPalette = asyncHandler(async (req, res) => {
 
   return res.status(201).json({
     success: newPalette ? true : false,
-    createdPalette: newPalette ? newPalette : "cannot create palette",
+    data: newPalette ? newPalette : "cannot create palette",
   });
 });
 
@@ -52,7 +52,7 @@ const getPalettes = asyncHandler(async (req, res) => {
 
   // Pagination
   const page = +req.query.page || 1;
-  const limit = +req.query.limit || 2;
+  const limit = +req.query.limit || 10;
   const skip = (page - 1) * limit;
 
   queryCommand = queryCommand.skip(skip).limit(limit);
@@ -69,7 +69,7 @@ const getPalettes = asyncHandler(async (req, res) => {
   return res.status(200).json({
     success: response ? true : false,
     counts,
-    palettes: response ? response : "cannot get palettes",
+    data: response ? response : "cannot get palettes",
   });
 });
 
@@ -79,7 +79,7 @@ const getPalette = asyncHandler(async (req, res) => {
   const palette = await Palette.findById(id);
   return res.status(200).json({
     success: palette ? true : false,
-    palette: palette ? palette : "cannot get palette",
+    data: palette ? palette : "cannot get palette",
   });
 });
 const updatePalette = asyncHandler(async (req, res) => {
@@ -101,7 +101,7 @@ const updatePalette = asyncHandler(async (req, res) => {
 
   return res.status(200).json({
     success: response ? true : false,
-    updatePalette: response ? response : "update palette failed",
+    updated: response ? response : "update palette failed",
   });
 });
 const deletePalette = asyncHandler(async (req, res) => {
@@ -111,20 +111,21 @@ const deletePalette = asyncHandler(async (req, res) => {
   const response = await Palette.findByIdAndDelete(id);
   return res.status(200).json({
     success: response ? true : false,
-    deletePalette: response ? response : "delete palette failed",
+    deleted: response ? response : "delete palette failed",
   });
 });
 
 const toggleLiked = asyncHandler(async (req, res) => {
   const { _id } = req.user;
-  console.log(_id);
+
   const { pid } = req.params;
   if (!pid) throw new Error("Missing inputs");
   const alreadyLiked = await Palette.findOne({ _id: pid, likes: { $in: [_id] } });
   if (!alreadyLiked) {
     const response = await Palette.findByIdAndUpdate(
       pid,
-      { $push: { likes: _id } },
+      { $push: { likes: _id }, $inc: { total_like: 1 } },
+
       { new: true }
     );
 
@@ -135,7 +136,7 @@ const toggleLiked = asyncHandler(async (req, res) => {
   } else {
     const response = await Palette.findByIdAndUpdate(
       pid,
-      { $pull: { likes: _id } },
+      { $pull: { likes: _id }, $inc: { total_like: -1 } },
       { new: true }
     );
     return res.status(200).json({

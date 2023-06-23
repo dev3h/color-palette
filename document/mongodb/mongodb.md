@@ -79,6 +79,11 @@ Ten_schema.methods = {
 - `$push` để thêm 1 phần tử vào mảng
 - `$pull` để xóa 1 phần tử trong mảng
 
+## $ins
+
+- [doc](https://www.mongodb.com/docs/manual/reference/operator/update/inc/)
+- `$inc` để tăng giá trị
+
 ## Lấy dữ liệu giữa các collection có ref tới nhau thông qua populate
 
 - Điều kiện là phải có kiểu `objectId` và phải có `ref` tới collection đó

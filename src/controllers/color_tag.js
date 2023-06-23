@@ -8,7 +8,7 @@ const createColorTag = asyncHandler(async (req, res) => {
   const newColorTag = await ColorTag.create(req.body);
   return res.status(201).json({
     success: newColorTag ? true : false,
-    createdColorTag: newColorTag ? newColorTag : "cannot create color tag",
+    data: newColorTag ? newColorTag : "cannot create color tag",
   });
 });
 
@@ -49,7 +49,7 @@ const getColorTags = asyncHandler(async (req, res) => {
 
   // Pagination
   const page = +req.query.page || 1;
-  const limit = +req.query.limit || 2;
+  const limit = +req.query.limit || 10;
   const skip = (page - 1) * limit;
 
   queryCommand = queryCommand.skip(skip).limit(limit);
@@ -61,7 +61,7 @@ const getColorTags = asyncHandler(async (req, res) => {
   return res.status(200).json({
     success: response ? true : false,
     counts,
-    colorTags: response ? response : "cannot get color tags",
+    data: response ? response : "cannot get color tags",
   });
 });
 
@@ -71,7 +71,7 @@ const getColorTag = asyncHandler(async (req, res) => {
   const colorTag = await ColorTag.findById(id);
   return res.status(200).json({
     success: colorTag ? true : false,
-    colorTag: colorTag ? colorTag : "cannot get color tag",
+    data: colorTag ? colorTag : "cannot get color tag",
   });
 });
 const updateColorTag = asyncHandler(async (req, res) => {
@@ -80,7 +80,7 @@ const updateColorTag = asyncHandler(async (req, res) => {
   const response = await ColorTag.findByIdAndUpdate(id, req.body, { new: true });
   return res.status(200).json({
     success: response ? true : false,
-    updateColorTag: response ? response : "update color tag failed",
+    updated: response ? response : "update color tag failed",
   });
 });
 const deleteColorTag = asyncHandler(async (req, res) => {
@@ -90,7 +90,7 @@ const deleteColorTag = asyncHandler(async (req, res) => {
   const response = await ColorTag.findByIdAndDelete(id);
   return res.status(200).json({
     success: response ? true : false,
-    deleteColorTag: response ? response : "delete color tag failed",
+    deleted: response ? response : "delete color tag failed",
   });
 });
 

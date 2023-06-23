@@ -39,6 +39,10 @@ var paletteSchema = new Schema(
         ref: "User",
       },
     ],
+    total_like: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     timestamps: true,
