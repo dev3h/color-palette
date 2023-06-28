@@ -1,0 +1,3 @@
+- [express doesn't set cookie](https://stackoverflow.com/questions/36824106/express-doesnt-set-a-cookie)
+- fix in axios and express
+- Thêm `withCredentials: true,` lúc gọi axios cho route muốn lưu cookie (ở đây là ở api register) và phải thêm `credentials: true` vào chỗ cors trong nodejs để tránh lỗi CORS và cho phép giao tiếp cookie giữa client và server

@@ -11,6 +11,7 @@ const uploadCloud = require("../config/cloudinary.config");
 const router = express.Router();
 
 router.post("/register", controllers.register);
+router.get("/finalregister/:token", controllers.finalregister);
 router.post("/login", controllers.login);
 router.get("/current", verifyAccessToken, controllers.getCurrent);
 router.post("/refreshtoken", controllers.refreshAccessToken);

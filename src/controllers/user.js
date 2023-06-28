@@ -2,13 +2,34 @@ const asyncHandler = require("express-async-handler");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const cloudinary = require("cloudinary").v2;
+const uniqid = require("uniqid");
 
 const { User } = require("../models");
 const { generateAccessToken, generateRefreshToken } = require("../middlewares/jwt");
 const sendMail = require("../utils/sendMail");
 
+// const register = asyncHandler(async (req, res) => {
+//   const { email, password, username, displayname } = req.body;
+//   if (!email || !password || !username || !displayname) {
+//     return res.status(400).json({
+//       success: false,
+//       mes: "Please fill all the fields",
+//     });
+//   }
+//   const user = await User.findOne({ email });
+//   if (user) throw new Error("User already exists");
+//   else {
+//     const newUser = await User.create(req.body);
+//     res.status(200).json({
+//       success: newUser ? true : false,
+//       mes: newUser ? "Register successfully" : "Register failed",
+//     });
+//   }
+// });
+
 const register = asyncHandler(async (req, res) => {
   const { email, password, username, displayname } = req.body;
+
   if (!email || !password || !username || !displayname) {
     return res.status(400).json({
       success: false,
@@ -16,14 +37,45 @@ const register = asyncHandler(async (req, res) => {
     });
   }
   const user = await User.findOne({ email });
-  if (user) throw new Error("User already exists");
+  if (user) throw new Error("User with email already exists");
   else {
-    const newUser = await User.create(req.body);
-    res.status(200).json({
-      success: newUser ? true : false,
-      mes: newUser ? "Register successfully" : "Register failed",
+    const token = uniqid();
+
+    // lưu tạm thời thông tin đăng ký vào cookie
+    const body = { ...req.body, token };
+    res.cookie("dataregister", body, {
+      httpOnly: true,
+      maxAge: 15 * 60 * 1000,
+    });
+    const html = `Vui lòng click vào link để hoàn tất đăng ký. Link này hết hạn sau 15p: <a href=${process.env.URL_SERVER}/api/v1/user/finalregister/${token}>Click here</a>`;
+
+    const data = {
+      email,
+      html,
+      subject: "Xác nhận đăng ký tài khoản",
+    };
+    await sendMail(data);
+    return res.status(200).json({
+      success: true,
+      mes: "Please check your email to complete registration",
     });
   }
+});
+
+const finalregister = asyncHandler(async (req, res) => {
+  const cookie = req.cookies;
+  const { token } = req.params;
+
+  if (!cookie?.dataregister || cookie?.dataregister?.token !== token)
+    return res.redirect(`${process.env.URL_CLIENT}/user/auth/finalregister/failed`);
+  const newUser = await User.create({
+    ...cookie?.dataregister,
+  });
+  if (newUser) {
+    res.clearCookie("dataregister");
+    return res.redirect(`${process.env.URL_CLIENT}/user/auth/finalregister/success`);
+  }
+  return res.redirect(`${process.env.URL_CLIENT}/user/auth/finalregister/failed`);
 });
 
 const login = asyncHandler(async (req, res) => {
@@ -72,7 +124,7 @@ const getCurrent = asyncHandler(async (req, res) => {
 const refreshAccessToken = asyncHandler(async (req, res) => {
   const cookie = req.cookies;
 
-  if (!cookie && !cookie.refreshToken) throw new Error("No refresh token in cookie");
+  if (!cookie && !cookie?.refreshToken) throw new Error("No refresh token in cookie");
 
   const rs = await jwt.verify(cookie.refreshToken, process.env.JWT_SECRET);
   const response = await User.findOne({
@@ -119,11 +171,12 @@ const forgotPassword = asyncHandler(async (req, res) => {
   const resetToken = user.createPasswordChangeToken();
   await user.save();
 
-  const html = `Vui lòng click vào link để đổi mật khẩu. Link này hết hạn sau 15p: <a href=${process.env.URL_SERVER}/api/user/resetpassword/${resetToken}>Click here</a>`;
+  const html = `Vui lòng click vào link để đổi mật khẩu. Link này hết hạn sau 15p: <a href=${process.env.URL_SERVER}/api/v1/user/resetpassword/${resetToken}>Click here</a>`;
 
   const data = {
     email,
     html,
+    subject: "Đổi mật khẩu",
   };
   const rs = await sendMail(data);
   return res.status(200).json({
@@ -263,4 +316,5 @@ module.exports = {
   updateProfileUser,
   updateUser,
   deleteUser,
+  finalregister,
 };

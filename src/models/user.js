@@ -61,6 +61,9 @@ var userSchema = new Schema(
     passwordResetExpires: {
       type: String,
     },
+    registerToken: {
+      type: String,
+    },
   },
   {
     timestamps: true,

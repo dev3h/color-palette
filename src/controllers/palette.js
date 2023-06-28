@@ -59,7 +59,7 @@ const getPalettes = asyncHandler(async (req, res) => {
 
   // Execute query
   const populateQuery = queryCommand.populate([
-    { path: "tags.colorTags", select: "name" },
+    { path: "tags.colorTags", select: "name hex" },
     { path: "tags.collectionTags", select: "name" },
     { path: "likes", select: "displayname email" },
   ]);

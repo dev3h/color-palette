@@ -16,6 +16,7 @@
 | 13  |        cloudinary         |                    nơi lưu trữ ảnh trên cloud                     |                https://www.npmjs.com/package/cloudinary |
 | 14  |          multer           |          lấy ảnh kiểu file lưu vào `memory` hoặc `disk`           |                      https://www.npmjs.com/package/uuid |
 | 15  | multer storage cloudinary |                 lưu ảnh từ multer vào cloudinary                  | https://www.npmjs.com/package/multer-storage-cloudinary |
+| 16  |          uniquid          |                    tạo một chuỗi id ngẫu nhiên                    |                    https://www.npmjs.com/package/uniqid |
 
 ```bash
 npm i express dotenv cors express-async-handler jsonwebtoken mongoose bcryptjs

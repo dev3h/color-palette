@@ -1,0 +1,2 @@
+- [deploy to cyclic](https://www.youtube.com/watch?v=Uj2Iq8TCQVE&list=PL9DgKZ5xomcrwvs25PGbtU2krGl5mFG7T&index=9)
+- [mongodb compass to mongodb atlas](https://www.youtube.com/watch?v=vAHd7oV1uE0&list=PL9DgKZ5xomcrwvs25PGbtU2krGl5mFG7T&index=8)
